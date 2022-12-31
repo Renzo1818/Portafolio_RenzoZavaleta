@@ -1,4 +1,4 @@
-/*CREACION DE TABLA - USUARIO - CLIENTE*/
+/*CREACION DE TABLA USUARIO*/
 
 use db_ventas;
 Create table Usuario(
@@ -10,6 +10,9 @@ Tipo_Usu varchar(30) not null,
 primary key(CodUsuario),
 foreign key(CodUsuario) references Trabajador(CodTrabajador)
 );
+
+
+/*CREACION DE TABLA CLIENTE*/
 
 create table Cliente(
 CodCliente int not null,
