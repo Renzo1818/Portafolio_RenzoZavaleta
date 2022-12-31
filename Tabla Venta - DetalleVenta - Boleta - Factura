@@ -1,0 +1,53 @@
+/*CREACION DE TABLA DETALLE_VENTA*/
+
+Create Table DetalleVenta(
+ID int not null,
+CodDetalleVenta int not null,
+CodVendedor int not null,
+CodProducto int not null,
+CantidadProducto int not null,
+Tipo varchar(30) not null,
+
+primary key(ID),
+foreign key(CodVendedor) references Trabajador(CodTrabajador),
+foreign key(CodProducto) references Producto(CodProducto)
+);
+
+/*CREACION DE TABLA BOLETA*/
+
+Create Table Boleta(
+ID int not null,
+CodBoleta int not null,
+Total double not null,
+
+primary key(ID),
+foreign key(CodBoleta) references DetalleVenta(ID)
+);
+
+/*CREACION DE TABLA FACTURA*/
+
+create Table Factura(
+ID int not null,
+CodFactura int not null,
+SubTotal double not null,
+Total double not null,
+
+primary key(ID),
+foreign key(CodFactura) references DetalleVenta(ID)
+);
+
+/*CREACION DE TABLA VENTA*/
+
+Create Table Venta(
+ID int not null auto_increment,
+CodVenta int not null,
+CodVendedor int not null,
+CodCliente int not null,
+Monto_Total double not null,
+Fecha_Venta datetime not null,
+
+primary key(ID),
+foreign key(CodVenta) references DetalleVenta(ID),
+foreign key(CodVendedor) references Trabajador(CodTrabajador),
+foreign key(CodCliente) references Cliente(CodCliente)
+);
