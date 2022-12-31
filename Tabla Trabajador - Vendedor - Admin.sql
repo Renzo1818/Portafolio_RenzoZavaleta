@@ -3,7 +3,7 @@
 create database DB_Ventas;
 use DB_Ventas;
 
-/*CREACION DE TABLA - TRABAJADOR - VENDEDOR - ADMINISTRADOR*/
+/*CREACION DE TABLA TRABAJADOR*/
 create table Trabajador(
 CodTrabajador int not null,
 Nombre varchar(30) not null,
@@ -25,6 +25,8 @@ Tipo_trabajador varchar(30) not null,
 primary key(CodTrabajador)
 );
 
+/*CREACION DE TABLA VENDEDOR*/
+
 create table vendedor(
 CodVendedor int not null,
 NHijos int not null,
@@ -33,6 +35,8 @@ boniHijos double not null,
 primary key(CodVendedor),
 foreign key(CodVendedor) references Trabajador(CodTrabajador)
 );
+
+/*CREACION DE TABLA ADMINISTRADOR*/
 
 create table Administrador(
 CodAdmin int not null,
