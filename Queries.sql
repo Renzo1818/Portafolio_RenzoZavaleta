@@ -1,6 +1,9 @@
+
+/*CREACION DE DB*/
 create database DB_Ventas;
 use DB_Ventas;
 
+/*CREACION DE TABLA - TRABAJADOR - VENDEDOR - ADMINISTRADOR*/
 create table Trabajador(
 CodTrabajador int not null,
 Nombre varchar(30) not null,
@@ -20,4 +23,22 @@ Fecha_ingreso datetime not null,
 Tipo_trabajador varchar(30) not null,
 
 primary key(CodTrabajador)
+);
+
+create table vendedor(
+CodVendedor int not null,
+NHijos int not null,
+boniHijos double not null,
+
+primary key(CodVendedor),
+foreign key(CodVendedor) references Trabajador(CodTrabajador)
+);
+
+create table Administrador(
+CodAdmin int not null,
+Monto_Impuesto double not null,
+Utilidades double not null,
+
+primary key(CodAdmin),
+foreign key(CodAdmin) references Trabajador(CodTrabajador)
 );
