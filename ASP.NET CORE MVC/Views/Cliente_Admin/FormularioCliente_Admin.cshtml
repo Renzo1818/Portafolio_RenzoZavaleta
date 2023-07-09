@@ -1,0 +1,76 @@
+﻿@model BIBLIOTECA_VIRTUAL.Models.Persona
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@{
+    IEnumerable<Distrito> Distritos = ViewBag.Distritos;
+}
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <LINK REL=StyleSheet HREF="~/css/style.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body class ="RegisterCliAd">
+        <div class="container">
+          <h1>REGISTRO</h1>
+            <form asp-controller="Cliente_Admin" asp-action="AgregarCliente_Admin" method="post">
+                <div class="form-group">
+                <input type="hidden" asp-for="IdTipoPersona" value="@ViewData["idTipoPersona"]" />
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nombre</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre" asp-for="Nombre">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Apellido</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apellido" asp-for="Apellido">
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">DNI</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="DNI" asp-for="Dni">
+                    <span asp-validation-for="Dni" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Telefono</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Telefono" asp-for="Telefono">
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Correo Electronico</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Correo Electronico" asp-for="CorreoElec">
+                    <span asp-validation-for="CorreoElec" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="distritos">Distritos:</label>
+                    <select class="form-control" id="distritos" asp-for="IdDistrito" name="IdDistrito">
+                    @foreach (var item in Distritos)
+                    {
+                        <option value="@item.IdDistrito">@item.Descripcion</option>
+                    }
+                    </select>
+                    <span asp-validation-for="IdDistrito" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" value="btn" name="Siguiente" data-toggle="modal" data-target="#exampleModal">Siguiente</button>
+                </div>
+                <div class="form-group">
+                </div>
+
+            </form>
+            @if (TempData["Mensaje"] != null)
+            {
+                <script>
+                    window.onload = function() {
+                        alert("@TempData["Mensaje"]");
+                    };
+                </script>
+            }
+        </div>
+    </body>
+</html>

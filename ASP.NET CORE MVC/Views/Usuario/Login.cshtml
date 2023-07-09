@@ -1,0 +1,39 @@
+﻿@model BIBLIOTECA_VIRTUAL.Models.Usuario
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        <title> Form Login | fazt</title>
+        <link rel="stylesheet" href="~/css/diseño.css" />
+    </head>
+    <body>
+        <div class="login-box">
+            <img class="avatar" src="~/img/libro.jpg" alt="Logo en FAzt" />
+            <h1>Ingresar</h1>
+            <form>
+                <label for="username">Usuario</label>
+                <input type="text" placeholder="Ingresar Usuario" asp-for="Username" />
+
+                <label for="password">Contraseña</label>
+                <input type="password" placeholder="Ingresar Contraseña" asp-for="Contrasena" />
+
+                <input asp-controller="Usuario" asp-action="Validar" type="submit" value="Ingresar" />
+
+                <a >¿Olvidaste tu contraseña?</a><br />
+                <a asp-controller="Cliente_Admin" asp-action="FormularioCliente_Admin">No tienes una cuenta?</a>
+               
+            </form>
+        </div>
+         @if (TempData["Mensaje"] != null)
+            {
+                <script>
+                    window.onload = function() {
+                        alert("@TempData["Mensaje"]");
+                    };
+                </script>
+            }
+    </body>
+</html>

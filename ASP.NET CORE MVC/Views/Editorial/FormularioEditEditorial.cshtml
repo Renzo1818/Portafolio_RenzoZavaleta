@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Editorial.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.Editorial>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <LINK REL=StyleSheet HREF="~/css/TablaLibros.css" TYPE="text/css" MEDIA=screen>
+    <style>
+        .table-bordered tr, .table-bordered td {
+            border: 2px solid #000;
+        }
+
+        .table-bordered tr,
+        .table-bordered td {
+            border: 2px solid #000;
+        }
+
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 2px solid #000;
+            position: relative;
+        }
+
+            .table-bordered td::before,
+            .table-bordered th::before {
+                content: "";
+                position: absolute;
+                left: -2px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #000;
+            }
+    </style>
+    </head>
+    <body>
+    <h1><strong>PANEL EDITAR Y ELIMINAR EDITORIAL</strong></h1>
+        <table class="table table-bordered">
+            <tr>
+            <td><strong>Codigo</strong></td>
+            <td><strong>Razon social</strong></td>
+            <td><strong>Ruc</strong></td>
+            <td><strong>Direccion</strong></td>
+            <td><strong>Correo electronico</strong></td>
+            <td><strong>Accion editar</strong></td>
+            <td><strong>Accion eliminar</strong></td>
+            </tr>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.IdEditorial</td>
+                        <td>@item.RazonSocial</td>
+                        <td>@item.Ruc</td>
+                        <td>@item.Direccion</td>
+                        <td>@item.CorreoElec</td>
+                        <td>
+                            <div class="form-group">
+                                <a asp-controller="Editorial" asp-action="FormularioModificar" asp-route-id="@item.IdEditorial" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Editar</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <a asp-controller="Editorial" asp-action="EliminarEditorial" asp-route-id="@item.IdEditorial" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+        </table>
+        @if (TempData["Mensaje"] != null)
+            {
+                <script>
+                    window.onload = function() {
+                        alert("@TempData["Mensaje"]");
+                    };
+                </script>
+            }
+    </body>
+</html>

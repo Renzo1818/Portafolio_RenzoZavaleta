@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Editorial.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.Editorial>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        <link rel="stylesheet" href="~/css/ListadoEditorial.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+    </head>
+    <body>
+        <h2><strong>LISTA DE EDITORES</strong></h2>
+        <div class="card-deck">
+            @foreach(var item in Model)
+            {
+              <div class="card m-4" style="min-width:18rem;max-width:30.5%;">
+                <div class="card-header">
+                    <h3>@item.RazonSocial</h3>
+                    <h5>@item.Ruc</h5>
+                    <h5>@item.Direccion</h5>
+                    <h5>@item.CorreoElec</h5>
+                    @if(@item.Estado){
+                        <h6>Activo</h6>
+                    }else{
+                        <h6>Inactivo</h6>
+                    }
+                </div>
+              </div>
+            }
+        </div>
+    <script>
+        $(document).ready(function () {
+            $('.card-carousel').slick({
+                slidesToShow: 3, // Define cuántas tarjetas se muestran al mismo tiempo
+                slidesToScroll: 1, // Define cuántas tarjetas se desplazan al hacer clic en los controles
+                autoplay: true, // Activa el carrusel automático
+                autoplaySpeed: 2000 // Define la velocidad de reproducción automática en milisegundos
+            });
+        });
+    </script>
+    </body>
+</html>

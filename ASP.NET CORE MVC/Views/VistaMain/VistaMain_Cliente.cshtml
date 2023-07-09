@@ -1,0 +1,349 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Cliente.cshtml";
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    IEnumerable<ConsolidadoLibro> Reciente = ViewBag.Reciente;
+    IEnumerable<ConsolidadoLibro> Infantil = ViewBag.Infantil;
+    IEnumerable<ConsolidadoLibro> Cuento = ViewBag.Cuento;
+    IEnumerable<ConsolidadoLibro> Novela = ViewBag.Novela;
+    IEnumerable<ConsolidadoLibro> Poesia = ViewBag.Poesia;
+    IEnumerable<ConsolidadoLibro> Terror = ViewBag.Terror;
+    IEnumerable<ConsolidadoLibro> Accion = ViewBag.Accion;
+    IEnumerable<ConsolidadoLibro> Aventura = ViewBag.Aventura;
+    IEnumerable<ConsolidadoLibro> Romance= ViewBag.Romance;
+    
+}
+<html>
+<head>
+    <title>Biblioteca</title>
+   <link rel="stylesheet" href="~/css/styleMain.css" /> 
+   <LINK REL=StyleSheet HREF="~/css/style.css" TYPE="text/css" MEDIA=screen>
+</head>
+<body>
+    <header>
+        <div class="container">
+            
+            <nav>
+                <a href="#somos-proya">Quienes Somos</a>
+                <a href="#nuestros-programas">Nuestros Libros</a>
+                <a href="#caracteristicas">Editoriales</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <h1>Aprendé de la lectura <br>con los Mejores</h1>
+        
+    </section>
+
+    <section id="somos-proya">
+        <div class="container">
+            <img class="img-container" src="~/img/libroissssssss.png" alt="Logo en FAzt" />
+            <div class="img-container"></div>
+            <div class="texto">
+
+                <h2>Somos <span class="color-acento">Biblioteca Uchil</span></h2>
+                
+                <p> Una biblioteca es un lugar donde cada persona puede sentirse libre para adquirir conocimiento, sabiduría y cultura. Es un universo cargado de información a descubrir y que propicia el encuentro y las oportunidades a través del acceso</p>
+            </div>
+           
+            
+        </div>
+    </section>
+    
+    <section id="nuestros-programas">
+        <div class="container">
+            <h2>Libros recientes</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Reciente)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Revisar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+         <div class="container">
+            <h2>Infantil</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Infantil)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Revisar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+         <div class="container">
+            <h2>Cuento</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Cuento)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Revisar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Novela</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Novela)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Revisar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Poesia</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Poesia)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reserva</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Terror</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Terror)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reserva</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Accion</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Accion)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reserva</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Aventura</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Aventura)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reservar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Romance</h2>
+            <div class="programas">
+                <div class="card-deck">
+                @foreach(var item in Romance)
+                {
+                  <div class="card m-4" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("~\\", "~/").Replace("\\", "/");
+                        }
+                        <input type ="hidden" value="@item.IdLibro">
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <div style="color: black;">
+                        <h6 >@item.Titulo</h6>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                         </div>
+                        <div class="form-group">
+                                <a asp-controller="Consolidado" asp-action="DetalleLibro" asp-route-id="@item.IdLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Reservar</a>
+                        </div>
+                    </div>
+                  </div>
+                }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="caracteristicas">
+        <div class="container">
+            <ul>
+                <li>.ANAGRAMA.</li>
+                <li>.MALPASO.</li>
+                <li>.TRAMA EDITORI.</li>
+                <li>.PUNTO DE VISTA EDITORES.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="final">
+        <h2>Contactanos</h2>
+        <h4>Lima: (01) 315 9610 | Provincia: 0801 19 610</h4>
+        <h2>Alumnos (SAE):</h2>
+        <h4>Lima: (01) 315 9600 | Provincia: 0801 19 600</h4>
+        <h3>Acerca de la BNP</h3>
+        <h4>Plataforma virtual de trámite documentario</h4>
+        <h4>Horarios y locales</h4>
+        <h4>Voluntariado</h4>
+        <h4>Donaciones</h4>
+        <h4>Uso temporal de ambientes</h4>
+        <h4>Ecoeficiencia</h4>
+        <h4>Visitas guiadas</h4>
+        <h4>Cafae BNP</h4>
+        <h4>Piscina BNP</h4>
+        <h4>Preguntas frecuentes</h4>
+        <h4>Solicitar asistencia</h4>
+        <h4>Marco legal</h4>    
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Biblioteca 2023</p>
+        </div>
+    </footer>
+</body>
+</html>

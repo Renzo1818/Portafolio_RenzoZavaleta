@@ -1,0 +1,86 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Cliente.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.TemporalPrestamo>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+         <LINK REL=StyleSheet HREF="~/css/Vercarrito.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        .table-bordered tr, .table-bordered td {
+            border: 2px solid #000;
+        }
+
+        .table-bordered tr,
+        .table-bordered td {
+            border: 2px solid #000;
+        }
+
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 2px solid #000;
+            position: relative;
+        }
+
+            .table-bordered td::before,
+            .table-bordered th::before {
+                content: "";
+                position: absolute;
+                left: -2px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #000;
+            }
+    </style>
+    </head>
+    <body>
+    <h1 style="font-size: 32px;">Carrito</h1>
+        <table class="table table-bordered">
+            <tr>
+            <td><strong>Codigo libro</strong></td>
+            <td><strong>Titulo</strong></td>
+            <td><strong>Autor</strong></td>
+            <td><strong>Editorial</strong></td>
+            <td><strong>Categoria</strong></td>
+            <td><strong>Cantidad</strong></td>
+            <td><strong>Fecha de inicio</strong></td>
+            <td><strong>Fecha Final</strong></td>
+            <td><strong>Accion eliminar</strong></td>
+            </tr>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.codigoLibro</td>
+                        <td>@item.titulo</td>
+                        <td>@item.autor</td>
+                        <td>@item.editorial</td>
+                        <td>@item.categoria</td>
+                        <td>@item.cantidad</td>
+                        <td>@item.fechaInicio</td>
+                        <td>@item.fechaFin</td>
+                        <td>
+                           <a asp-controller="TemporalPrestamo" asp-action="EliminarRegistrar" asp-route-id="@item.codigoLibro" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+        </table>
+        <a asp-controller="Reserva" asp-action="Agregar" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">PROCESAR RESERVAR</a>
+        @if (TempData["ALERTA"] != null)
+        {
+            <script>
+                window.onload = function () {
+                    alert("@TempData["ALERTA"]");
+                };
+            </script>
+        }
+    </body>
+</html>

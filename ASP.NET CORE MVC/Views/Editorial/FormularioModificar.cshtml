@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Editorial.cshtml";
+}
+@model BIBLIOTECA_VIRTUAL.Models.Editorial
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <LINK REL=StyleSheet HREF="~/css/style.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body class ="RegisterCliAd">
+        <div class="container">
+          <h1>EDITAR EDITORIAL</h1>
+            <form asp-controller="Editorial" asp-action="ModificarEditorial" method="post">
+                <div class="form-group">
+                <input type="hidden" asp-for="IdEditorial" value="@Model.IdEditorial" />
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Razon social</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Razon social" asp-for="RazonSocial" value="@Model.RazonSocial">
+                    <span asp-validation-for="RazonSocial" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Ruc</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ruc" asp-for="Ruc" value="@Model.Ruc">
+                    <span asp-validation-for="Ruc" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Direccion</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Direccion" asp-for="Direccion" value="@Model.Direccion">
+                    <span asp-validation-for="Direccion" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Correo electronico</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Correo electronico" asp-for="CorreoElec" value="@Model.CorreoElec">
+                    <span asp-validation-for="CorreoElec" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                <input type="hidden" asp-for="Estado" value="true" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" value="btn" name="Editar" data-toggle="modal" data-target="#exampleModal">Editar</button>
+                </div>
+                <div class="form-group">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Cliente.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.ConsolidadoReserva>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+    <LINK REL=StyleSheet HREF="~/css/Verhistorial.css" TYPE="text/css" MEDIA=screen>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style>
+        .table-bordered tr, .table-bordered td {
+            border: 2px solid #000;
+        }
+
+        .table-bordered tr,
+        .table-bordered td {
+            border: 2px solid #000;
+        }
+
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 2px solid #000;
+            position: relative;
+        }
+
+            .table-bordered td::before,
+            .table-bordered th::before {
+                content: "";
+                position: absolute;
+                left: -2px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #000;
+            }
+    </style>
+    </head>
+    <body>
+    <h3 style="font-size: 32px;">Historial Reservas</h3>
+        <table class="table table-bordered">
+            <tr>
+            <td><strong>Id Reserva</strong></td>
+            <td><strong>Titulo</strong></td>
+            <td><strong>Autor</strong></td>
+            <td><strong>Categoria</strong></td>
+            <td><strong>Editorial</strong></td>
+            <td><strong>Fecha de inicio</strong></td>
+            <td><strong>Fecha Final</strong></td>
+            <td><strong>Estado</strong></td>
+            </tr>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    int idRe = 0;
+                    @if(@item.IdReserva != idRe){
+                        <tr>
+                            <th Rowspan="2">@item.IdReserva</th>
+                        </tr>
+                    }
+                    <tr>
+                        <td>@item.Titulo</td>
+                        <td>@item.Autor</td>
+                        <td>@item.Categoria</td>
+                        <td>@item.Editorial</td>
+                        <td>@item.FechaInicio</td>
+                        <td>@item.FechaFinal</td>
+                        @if(@item.Estado){
+                           <td>DEVUELTO</td>
+                        }else{
+                            <td>EN PRESTAMO</td>
+                        }
+                        </tr>
+                    idRe = @item.IdReserva;
+                }
+        </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Libro.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.ConsolidadoLibro>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/ListadoLibros.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+</head>
+<body>
+    <h1>LISTA DE CATALOGO</h1>
+    <div class="card-deck">
+        <div class="card-carousel">
+            @foreach (var item in Model)
+            {
+                <div class="card" style="min-width:18rem;max-width:10.5%;">
+                    <div class="card-header">
+                        @{
+                            string rutaImagenRelativa = @item.RutaImagen;
+                            rutaImagenRelativa = rutaImagenRelativa.Replace("\\", "/").Replace("\\", "/");
+                        }
+                        <img src="@Url.Content(rutaImagenRelativa)" alt="Imagen del catálogo" style="width: 100%; height: auto;">
+                        <h4>@item.Titulo</h4>
+                        <h5>@item.Categoria</h5>
+                        <h6>@item.Autor</h6>
+                        <h6>@item.FechaPublicacion.ToShortDateString()</h6>
+                        @if (@item.Estado)
+                        {
+                            <h6>Activo</h6>
+                        }
+                        else
+                        {
+                            <h6>Inactivo</h6>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.card-carousel').slick({
+                slidesToShow: 3, // Define cuántas tarjetas se muestran al mismo tiempo
+                slidesToScroll: 1, // Define cuántas tarjetas se desplazan al hacer clic en los controles
+                autoplay: true, // Activa el carrusel automático
+                autoplaySpeed: 2000 // Define la velocidad de reproducción automática en milisegundos
+            });
+        });
+    </script>
+</body>
+</html>

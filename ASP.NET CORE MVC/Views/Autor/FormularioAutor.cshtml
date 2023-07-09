@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Autor.cshtml";
+}
+@model BIBLIOTECA_VIRTUAL.Models.Autor
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <LINK REL=StyleSheet HREF="~/css/FormularioAutor.css" TYPE="text/css" MEDIA=screen>
+    </head>
+    <body class ="RegisterCliAd">
+        <div class="container">
+          <h1>REGISTRO</h1>
+            <form asp-controller="Autor" asp-action="AñadirAutor" method="post">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nombre Apellido</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nombre y Apellido" asp-for="NombreApellido">
+                    <span asp-validation-for="NombreApellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Fecha Nacimiento" asp-for="FechaNacimiento">
+                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Nacionalidad</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nacionalidad" asp-for="Nacionalidad">
+                    <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                <input type="hidden" asp-for="Estado" value="true" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" value="btn" name="Siguiente" data-toggle="modal" data-target="#exampleModal">Agregar</button>
+                </div>
+                <div class="form-group">
+                </div>
+            </form>
+            @if (TempData["Mensaje"] != null)
+            {
+                <script>
+                    window.onload = function() {
+                        alert("@TempData["Mensaje"]");
+                    };
+                </script>
+            }
+        </div>
+    </body>
+</html>

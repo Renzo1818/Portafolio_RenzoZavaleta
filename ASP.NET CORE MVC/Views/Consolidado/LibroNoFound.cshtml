@@ -1,0 +1,44 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Cliente.cshtml";
+}
+@model IEnumerable<BIBLIOTECA_VIRTUAL.Models.ConsolidadoLibro>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    IEnumerable<Categorium> Categoria = ViewBag.Categorias1;
+    IEnumerable<Autor> Autores = ViewBag.Autores;
+}
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/ListadoLibros.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+</head>
+<body>
+    <h1>LISTA DE CATALOGO</h1>
+    <form asp-controller="Consolidado" asp-action="Buscar" method="post">
+        <input type="text" name="titulo" class="form-text" placeholder="BuscarLibro" />
+        <select class="form-control" id="categoria" name="categoria">
+            <option value="">Categorias</option>
+            @foreach (var item in Categoria)
+                {
+                     <option value="@item.Descripcion">@item.Descripcion</option>
+                }
+        </select>
+        <select class="form-control" id="autores" name="autores">
+            <option value="">Autores</option>
+            @foreach (var item in Autores)
+                {
+                     <option value="@item.NombreApellido">@item.NombreApellido</option>
+                }
+        </select>
+        <div class="form-group">
+        <input type="submit" placeholder="Buscar" class="btn btn-dark" />
+        </div>
+    </form>
+    <h1 class="text text-danger">NO HAY LIBROS ENCONTRADOS</h1>
+</body>
+</html>

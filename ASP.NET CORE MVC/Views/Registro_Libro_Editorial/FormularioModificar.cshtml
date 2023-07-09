@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/Layouts/Layout_Libro.cshtml";
+}
+@model BIBLIOTECA_VIRTUAL.Models.ConsolidadoLibro
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    IEnumerable<Editorial> Editorial = ViewBag.Editorial;
+    IEnumerable<Categorium> Categoria = ViewBag.Categoria;
+    IEnumerable<Autor> Autor = ViewBag.Autor;
+}
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <LINK REL=StyleSheet HREF="~/css/FormularioRegistro.css" TYPE="text/css" MEDIA=screen>
+        <LINK REL=StyleSheet HREF="~/css/style.css" TYPE="text/css" MEDIA=screen>
+    </head>
+   <body>
+        <div class="container">
+          <h1>EDITAR REGISTRO LIBRO</h1>
+            <form  method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                <input type="hidden" name="IdLibro" value="@Model.IdLibro" />
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Titulo</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Titulo" name="txtTitulo" value="@Model.Titulo">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria:</label>
+                    <select class="form-control" id="categoria" name="IdCategoria">
+                    @foreach (var item in Categoria)
+                    {
+                        <option value="@item.IdCategoria" selected="@(item.Descripcion == @Model.Categoria)">@item.Descripcion</option>
+                    }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="autores">Autores:</label>
+                    <select class="form-control" id="autores" name="IdAutor" value="@Model.Autor">
+                    @foreach (var item in Autor)
+                    {
+                        <option value="@item.IdAutor" selected="@(item.NombreApellido == @Model.Autor)">@item.NombreApellido</option>
+                    }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editoriales">Editoriales:</label>
+                    <select class="form-control" id="editoriales" name="IdEditorial">
+                    @foreach (var item in Editorial)
+                    {
+                        <option value="@item.IdEditorial" selected="@(item.RazonSocial == @Model.Editorial)">@item.RazonSocial</option>
+                    }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Cantidad</label>
+                    <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Cantidad" name="txtCantidad" value="@Model.Cantidad">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Fecha_Publicacion</label>
+                    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Fecha Publicacion" name="txtFechaPubli" asp-for="@Model.FechaPublicacion">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Imagen</label>
+                    <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Imagen" name="imagenLibro" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Descripción</label>
+                    <textarea class="form-control" id="formGroupExampleInput2" placeholder="Descripción" name="txtSinopsis">@Model.Sinopsis</textarea>
+                </div>
+                <div class="form-group">
+                    <button asp-controller="Registro_Libro_Editorial" asp-action="ModificarRegistro" type="submit" class="btn btn-primary" value="btn" name="Editar" data-toggle="modal" data-target="#exampleModal">Editar</button>
+                </div>
+                <div class="form-group">
+                </div>
+            </form>
+            @if (TempData["Mensaje"] != null)
+            {
+                <script>
+                    window.onload = function() {
+                        alert("@TempData["Mensaje"]");
+                    };
+                </script>
+            }
+           </div>
+    </body>
+</html>
