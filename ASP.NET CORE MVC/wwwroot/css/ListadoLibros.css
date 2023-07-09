@@ -1,0 +1,144 @@
+﻿<style>
+    .card-deck {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        text-align: center;
+    }
+
+    .card-header img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .card-header h6 {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .card-header h6:last-child {
+        margin-bottom: 0;
+    }
+
+    .card-header h6:first-child {
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .card-header h6:nth-child(2),
+    .card-header h6:nth-child(3),
+    .card-header h6:nth-child(4),
+    .card-header h6:nth-child(5) {
+        color: #777;
+    }
+
+    .card-header h6:nth-child(5) {
+        margin-bottom: 10px;
+    }
+
+    .card-header h6:last-child {
+        margin-bottom: 10px;
+    }
+
+    .card-header h6:last-child:not(:last-of-type) {
+        margin-bottom: 5px;
+    }
+
+    .card-header h6:last-child:not(:last-of-type) + h6 {
+        margin-bottom: 10px;
+    }
+
+    .card-header h6:last-child:not(:last-of-type):before {
+        content: "•";
+        margin-right: 5px;
+        color: #aaa;
+    }
+
+    .card-header h6:last-child:not(:last-of-type):after {
+        content: ",";
+    }
+
+    .card-header h6:last-child:not(:last-of-type):after,
+    .card-header h6:last-child:not(:last-of-type):before {
+        display: inline;
+    }
+
+    .card-header h6:last-child:not(:last-of-type):last-child:after {
+        content: none;
+    }
+
+    .card-header h6:only-child {
+        margin-bottom: 10px;
+    }
+
+    .card-header h6:only-child:after {
+        content: none;
+    }
+
+    .card-header h6:empty {
+        display: none;
+    }
+
+    .card-header h6:last-child:empty {
+        margin-bottom: 0;
+    }
+    h4{
+        color:black;
+        font-family:Cooper;
+    }
+    .card-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    }
+
+    .card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    margin: 0 6px; /* Espacio entre las tarjetas */
+    }
+    h1{
+        font-family:'Agency FB';
+        text-align:center;
+    }
+    body{
+        margin:0;
+        padding:0;
+        background:url('../img/fondopapel.jpg')no-repeat center top;
+        background-size:cover;
+        
+    }
+    .card-deck {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    }
+
+    .card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    margin: 0 6px; /* Espacio entre las tarjetas */
+    }
+    h2 {
+    font-family: 'Agency FB';
+    text-align: center;
+    }
+    
+
+
+

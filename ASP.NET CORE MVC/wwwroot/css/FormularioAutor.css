@@ -1,0 +1,11 @@
+﻿h1 {
+    font-family: 'Agency FB';
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/registroLibro.jpg')no-repeat center top;
+    background-size: cover;
+}

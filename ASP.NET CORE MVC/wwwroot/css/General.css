@@ -1,0 +1,6 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/General.jpg') no-repeat center bottom;
+    background-size: 1710px 800px; /* Ancho: 1200px, Alto: 800px */
+}

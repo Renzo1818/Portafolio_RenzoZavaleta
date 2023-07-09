@@ -1,0 +1,11 @@
+﻿h1 {
+    font-family: 'Agency FB';
+    text-align: center;
+    color:cadetblue;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../img/fondotabla.jpg')no-repeat center top;
+    background-size: cover;
+}
