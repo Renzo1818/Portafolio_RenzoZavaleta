@@ -113,4 +113,37 @@ BEGIN
     -- Insertar el nombre y ID del trabajador en una tabla de registros de auditoría o cualquier otra tabla necesaria
     INSERT INTO REGREGISTRO_TRABAJADOR_FACTURA(id_Factura, id_Trabajador,nombre_trabajador)
     VALUES (@idFactura, @trabajador_id,@trabajador_nombre);
-END;
+END
+
+
+
+/* TABLAS PARA LOS TRIGGERS*/
+
+/*CREACION DE TB_reg_productos*/
+CREATE TABLE reg_productos(
+	[idProducto] [int] NULL,
+	[descripcion_pro] [varchar](20) NULL,
+	[precio] [float] NULL,
+	[insertado] [datetime] NULL
+) ON [PRIMARY]
+GO
+
+/*CREACION DE TB_Suscripciones*/
+CREATE TABLE Suscripciones(
+	[idSuscripcion] [int] NOT NULL,
+	[CantidadInserciones] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[idSuscripcion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+/*CREACION DE TB_REGISTRO_TRABAJADOR_FACTURA*/
+CREATE TABLE REGISTRO_TRABAJADOR_FACTURA(
+id_Factura VARCHAR(5),
+id_Trabajador int,
+nombre_trabajador varchar(50)
+)
+GO
